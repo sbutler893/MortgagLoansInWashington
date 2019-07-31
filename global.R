@@ -25,6 +25,7 @@ fieldDef<-read_csv('field definitions.csv')
 #add variable raceRevised to reclass Info not provided to N/A
 #add variable application_result to reclass action taken to 1 or 0
 modelData<-readData%>%mutate(sexRevised = ifelse(applicant_sex_name=="Information not provided by applicant in mail, Internet, or telephone application","Not applicable",as.character(applicant_sex_name)))%>%mutate(raceRevised = ifelse(applicant_race_name_1=="Information not provided by applicant in mail, Internet, or telephone application","Not applicable",as.character(applicant_race_name_1)))%>%mutate(application_result=ifelse(action_taken_name=="Loan originated",1,0))
+predData <- modelData
 
 #convert application_result to a factor 
 modelData$application_result <- as.factor(modelData$application_result)
