@@ -238,6 +238,7 @@ shinyServer(function(input, output, session) {
   
   #renders variable importance plot 
   output$rfPlot <- renderPlot({
+    rfFit <- randomForest(application_result ~ ., data = rfDataTrain, mtry = input$numPred, ntree = input$numTree, importance = TRUE)
     varImpPlot(rfFit)
   })
 ##### END PREDICTIVE MODELING TAB #####
