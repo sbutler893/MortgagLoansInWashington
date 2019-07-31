@@ -164,7 +164,6 @@ shinyServer(function(input, output, session) {
 ##### BEGIN PREDICTIVE MODELING TAB #####
   #get data for logisitc regression and fit logistic regression
   getpredData <- reactive({
-    predData <- modelData
     #for predictive modeling. Each if checks if variable is selected and if so that variable is added to the select statment.
     syntax<-"dplyr::select(predData, application_result,applicant_income_000s,loan_amount_000s"
     if (input$agencyBox==TRUE){
