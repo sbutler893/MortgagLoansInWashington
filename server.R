@@ -238,6 +238,11 @@ shinyServer(function(input, output, session) {
   
   #renders variable importance plot 
   output$rfPlot <- renderPlot({
+    ranForData<-modelData%>%mutate_if(is.character, as.factor)%>%select(application_result,applicant_income_000s,loan_amount_000s,agency_name,sexRevised,raceRevised,loan_purpose_name,loan_type_name)%>%drop_na()%>%sample_n(10000, replace = FALSE)
+    #create train and test data set
+    train <- sample(1:nrow(ranForData), size = nrow(ranForData)*0.8) 
+    test <- dplyr::setdiff(1:nrow(ranForData), train) 
+    rfDataTrain <- ranForData[train, ] 
     rfFit <- randomForest(application_result ~ ., data = rfDataTrain, mtry = input$numPred, ntree = input$numTree, importance = TRUE)
     varImpPlot(rfFit)
   })
