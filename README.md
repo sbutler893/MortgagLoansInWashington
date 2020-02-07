@@ -18,6 +18,7 @@
    - install.packages(caret)
    - install.packages(shinycssloaders)
    - install.packages (shinydashboard)
+   - install.packages('e1071', dependencies=TRUE)
 
 - Run the following commands:
    - library(shiny) 
