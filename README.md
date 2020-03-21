@@ -3,6 +3,9 @@
 ## Purpose:
 - To analyze and conclude if there are any signs of discrimination when it comes to lending patterns for mortgage loans.
 
+## Video Demo:
+https://youtu.be/EAnYE43fViM
+
 ## How to run project: 
 - Install the following packages in R:
 
